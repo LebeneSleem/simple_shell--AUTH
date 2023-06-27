@@ -18,4 +18,11 @@
 void swap_int(int *a, int *b);
 void bubble_sort(int *array, size_t size);
 
+/** Custom alternative functions used **/
+int string_len(char *string);
+char *string_cpy(char *dest, char *src);
+int string_cmp(char *s1, char *s2);
+char *_strdup(char *str);
+
+
 #endif
