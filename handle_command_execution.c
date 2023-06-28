@@ -1,33 +1,37 @@
 #include "shell.h"
 
 /**
- * handle_command_execution - executes a command using child
- * process
- * @argv: Array of argument
- * @env: Environment variable
+ * handle_command_execution - handles the execution of commands
+ * inputed
+ * @argv: Array of strings of the command
+ * @env: Environment variables of the command
  */
 
 void handle_command_execution(char **argv, char **env)
 {
+	pid_t child;
 	int status;
-	pid_t child = fork();
+	char *path;
+
+	child = fork();/*fork a child process*/
 
 	if (child == -1)
-
 	{
 		exit(EXIT_FAILURE);
 	}
-	else if (child == 0)
+	if (child == 0)
 	{
-		if (execve(argv[0], argv, env) == -1)
+		path = handle_path(argv[0]);/*get the path of the command*/
+		if (path != NULL)
 		{
-			perror("execve");
-			exit(EXIT_FAILURE);
+			if (execve(path, argv, env) == -1)
+			{
+				perror("execve");
+				free(path);
+				exit(EXIT_FAILURE);
+			}
+			free(path);
 		}
 	}
-	else
-	{
-		wait(&status);
-	}
+	wait(&status);/*parent process shd wait for the child*/
 }
-

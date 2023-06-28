@@ -15,18 +15,23 @@
 #define Max_Arguments 20
 #define PATH_MAX 100
 
+/**Shell entry point**/
+int main(int ac, char **av, char **env);
+
 void swap_int(int *a, int *b);
 void bubble_sort(int *array, size_t size);
+void prompt_command(char **av, char **env);
 
-/** Custom alternative functions used **/
+/**custom alternate functions used*/
 int string_len(char *string);
 char *string_cpy(char *dest, char *src);
 int string_cmp(char *s1, char *s2);
 char *_strdup(char *str);
 
+void _env(char **env);
+char *handle_path(char *command);
+void handle_arguments(char *lineptr, char **argv);
 void handle_command_execution(char **argv, char **env);
-void handle_command_prompt(char **av, char **env);
-void free_memory(char **inputptr);
-int main(int ac, char **av, char **env);
+void display_command_prompt(char **env);
 
 #endif

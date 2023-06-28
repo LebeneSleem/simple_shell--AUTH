@@ -9,9 +9,11 @@ int string_len(char *string)
 {
 	size_t length = 0;
 
-	while (*string++)
-		length++;
-
+	if (string != NULL)
+	{
+		while (*string++)
+			length++;
+	}
 	return (length);
 }
 
@@ -24,6 +26,11 @@ int string_len(char *string)
 char *string_cpy(char *dest, char *src)
 {
 	int a;
+
+	if (src == NULL)
+	{
+		return (dest);
+	}
 
 	for (a = 0; src[a] != '\0'; a++)
 	{
@@ -43,6 +50,10 @@ char *string_cpy(char *dest, char *src)
  */
 int string_cmp(char *s1, char *s2)
 {
+	if (s1 == NULL || s2 == NULL)
+	{
+		return (-1);
+	}
 	while (*s1 && *s2 && *s1 == *s2)
 	{
 		s1++;
