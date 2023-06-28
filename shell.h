@@ -24,5 +24,9 @@ char *string_cpy(char *dest, char *src);
 int string_cmp(char *s1, char *s2);
 char *_strdup(char *str);
 
+void handle_command_execution(char **argv, char **env);
+void handle_command_prompt(char **av, char **env);
+void free_memory(char **inputptr);
+int main(int ac, char **av, char **env);
 
 #endif
