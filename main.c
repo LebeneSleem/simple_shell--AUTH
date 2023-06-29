@@ -7,7 +7,6 @@
  * @env: Environment variable
  * Return: 0 (Success)
  */
-
 int main(int ac, char **av, char **env)
 {
 	(void)av;

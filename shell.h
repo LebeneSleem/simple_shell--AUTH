@@ -9,10 +9,10 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stddef.h>
-
+#include <sys/stat.h>
 
 #define BUFFER_SIZE 1024
-#define Max_Arguments 20
+#define Max_Arguments 100
 #define PATH_MAX 100
 
 /**Shell entry point**/
@@ -32,6 +32,8 @@ void _env(char **env);
 char *handle_path(char *command);
 void handle_arguments(char *lineptr, char **argv);
 void handle_command_execution(char **argv, char **env);
+void non_interactive_mode(char **env);
+void interactive_mode(char **env);
 void display_command_prompt(char **env);
 
 #endif
