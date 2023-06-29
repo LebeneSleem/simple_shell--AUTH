@@ -32,6 +32,7 @@ void handle_command_execution(char **argv, char **env)
 			}
 			free(path);
 		}
+		exit(EXIT_SUCCESS);
 	}
 	wait(&status);/*parent process shd wait for the child*/
 }
